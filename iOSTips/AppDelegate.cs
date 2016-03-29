@@ -1,5 +1,18 @@
-﻿using Foundation;
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
 using UIKit;
+using Foundation;
+using CoreGraphics;
+
+using MBProgressHUD;
+
+using Debug = System.Diagnostics.Debug ;
+
 
 namespace iOSTips
 {
@@ -24,6 +37,31 @@ namespace iOSTips
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 			#endif
+
+			// 需要使用者授權，才能發出 Notification
+			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+				var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes (
+					UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null);
+
+				application.RegisterUserNotificationSettings (notificationSettings);
+			} 
+
+
+			if (launchOptions != null)
+			{
+				// 如果是因為 Local Notification 啟動 App 
+				if (launchOptions.ContainsKey(UIApplication.LaunchOptionsLocalNotificationKey))
+				{
+					var localNotification = launchOptions[UIApplication.LaunchOptionsLocalNotificationKey] as UILocalNotification;
+					if (localNotification != null)
+					{
+						// 
+						Debug.WriteLine("Start with Local Notification");
+
+						UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+					}
+				}
+			}
 
 			return true;
 		}
@@ -57,6 +95,13 @@ namespace iOSTips
 		public override void WillTerminate (UIApplication application)
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
+		}
+
+		public override void ReceivedLocalNotification (UIApplication application, UILocalNotification notification)
+		{
+			Debug.WriteLine("Start with Local Notification : " + notification.AlertBody);
+			
+			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;	
 		}
 	}
 }

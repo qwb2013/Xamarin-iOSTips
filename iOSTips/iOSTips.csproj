@@ -68,12 +68,13 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Huai An Fang (53TT37D6U8)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchProfiling>true</MtouchProfiling>
+    <CodesignProvision>7d978a61-59e5-47b9-aa9a-12cb239171eb</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -119,6 +120,10 @@
     <Compile Include="KeyboardViewController.cs" />
     <Compile Include="KeyboardViewController.designer.cs">
       <DependentUpon>KeyboardViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalNotificationViewController.cs" />
+    <Compile Include="LocalNotificationViewController.designer.cs">
+      <DependentUpon>LocalNotificationViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -24,13 +24,32 @@ namespace iOSTips
 			Tips = new List<Tip>();
 
 			Tips.Add (new Tip{Name = "UITextField and Keyboard", Description = "" });
+			Tips.Add (new Tip{Name = "Local Notification", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
 
-				InvokeOnMainThread(()=>{
-					PerformSegue("moveToKeyboardViewSegue", this);
-				});
+				int index = e.Index ;
+
+				switch( index ){
+				case 0 :
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToKeyboardViewSegue", this);
+						});
+					}
+					break;
+				case 1:
+					{
+						InvokeOnMainThread(()=>{
+						PerformSegue("moveToNotificationViewSegue", this);
+						});
+					}
+					break;
+
+				}
+
+
 				
 			};
 			tipsTable.Source = tableSource;
@@ -92,7 +111,7 @@ namespace iOSTips
 				tableView.DeselectRow (indexPath, true);
 
 				Tip tip = Tips[indexPath.Row];
-				var args = new TipSelectedEventArgs {SelectedTip = tip};
+				var args = new TipSelectedEventArgs { Index = indexPath.Row, SelectedTip = tip};
 
 				OnAirportSelected (args);
 			}
@@ -104,6 +123,7 @@ namespace iOSTips
 
 
 	public class TipSelectedEventArgs : EventArgs{
+		public int Index { get; set; }
 		public Tip SelectedTip { get; set;}
 	}
 
