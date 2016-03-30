@@ -40,8 +40,11 @@ namespace iOSTips
 
 			// 需要使用者授權，才能發出 Notification
 			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-				var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes (
-					UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null);
+				var notificationSettings = 
+					UIUserNotificationSettings.GetSettingsForTypes (
+					UIUserNotificationType.Alert | 
+					UIUserNotificationType.Badge | 
+					UIUserNotificationType.Sound, null);
 
 				application.RegisterUserNotificationSettings (notificationSettings);
 

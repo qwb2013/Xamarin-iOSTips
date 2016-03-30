@@ -49,7 +49,8 @@ namespace iOSTips
 
 				// configure the alert
 				notification.AlertAction = "View Alert";
-				notification.AlertBody = string.IsNullOrEmpty( txtMessage.Text.Trim() )? "許功蓋警告" : txtMessage.Text.Trim() ;
+				notification.AlertBody = string.IsNullOrEmpty( txtMessage.Text.Trim() )
+					? "許功蓋警告" : txtMessage.Text.Trim() ;
 
 				// modify the badge
 				notification.ApplicationIconBadgeNumber = 1;
