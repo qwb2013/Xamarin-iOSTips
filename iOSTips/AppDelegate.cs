@@ -55,7 +55,7 @@ namespace iOSTips
 			if (launchOptions != null)
 			{
 				// 如果是因為 Local Notification 啟動 App 
-				if (launchOptions.ContainsKey(UIApplication.LaunchOptionsLocalNotificationKey))
+				if (launchOptions.ContainsKey ( UIApplication.LaunchOptionsLocalNotificationKey))
 				{
 					var localNotification = launchOptions[UIApplication.LaunchOptionsLocalNotificationKey] as UILocalNotification;
 					if (localNotification != null)
@@ -65,6 +65,18 @@ namespace iOSTips
 
 						UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
 					}
+				}
+
+				if (launchOptions.ContainsKey ( UIApplication.LaunchOptionsRemoteNotificationKey )) {
+				
+
+					NSDictionary remoteNotification = launchOptions[UIApplication.LaunchOptionsRemoteNotificationKey] as NSDictionary;
+					if(remoteNotification != null) 
+					{
+		
+					}
+
+					UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
 				}
 			}
 
@@ -113,14 +125,25 @@ namespace iOSTips
 		{
 			var DeviceToken = deviceToken.Description;
 			if (!string.IsNullOrWhiteSpace(DeviceToken)) {
-				DeviceToken = DeviceToken.Trim('<').Trim('>');
+
+				var temp = DeviceToken.Trim ('<').Trim ('>').Split (new[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+				var builder = new System.Text.StringBuilder ();
+
+				for (int index = 0; index < temp.Length; index++) {
+					builder.Append ( temp[index] );
+				}
+
+
+				DeviceToken = builder.ToString() ;
+				builder.Clear ();
 			}
 				
 			var oldDeviceToken = NSUserDefaults.StandardUserDefaults.StringForKey("PushDeviceToken");
 
 			if (string.IsNullOrEmpty(oldDeviceToken) || !oldDeviceToken.Equals(DeviceToken))
 			{
-				
+				// 上傳我們自己的 Server
 			}
 
 			Debug.WriteLine ("DeviceToken:" + DeviceToken );
