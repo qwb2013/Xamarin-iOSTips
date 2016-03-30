@@ -44,6 +44,8 @@ namespace iOSTips
 					UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null);
 
 				application.RegisterUserNotificationSettings (notificationSettings);
+
+				UIApplication.SharedApplication.RegisterForRemoteNotifications ();
 			} 
 
 
@@ -101,6 +103,38 @@ namespace iOSTips
 		{
 			Debug.WriteLine("Start with Local Notification : " + notification.AlertBody);
 			
+			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;	
+		}
+
+		public override void RegisteredForRemoteNotifications (UIApplication application, NSData deviceToken)
+		{
+			var DeviceToken = deviceToken.Description;
+			if (!string.IsNullOrWhiteSpace(DeviceToken)) {
+				DeviceToken = DeviceToken.Trim('<').Trim('>');
+			}
+				
+			var oldDeviceToken = NSUserDefaults.StandardUserDefaults.StringForKey("PushDeviceToken");
+
+			if (string.IsNullOrEmpty(oldDeviceToken) || !oldDeviceToken.Equals(DeviceToken))
+			{
+				
+			}
+
+			Debug.WriteLine ("DeviceToken:" + DeviceToken );
+
+			NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
+			NSUserDefaults.StandardUserDefaults.Synchronize ();
+		}
+
+		public override void FailedToRegisterForRemoteNotifications (UIApplication application, NSError error)
+		{
+			
+		}
+
+		public override void ReceivedRemoteNotification (UIApplication application, NSDictionary userInfo)
+		{
+			
+
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;	
 		}
 	}

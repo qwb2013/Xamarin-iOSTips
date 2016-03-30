@@ -25,6 +25,7 @@ namespace iOSTips
 
 			Tips.Add (new Tip{Name = "UITextField and Keyboard", Description = "" });
 			Tips.Add (new Tip{Name = "Local Notification", Description = "" });
+			Tips.Add (new Tip{Name = "Play Video", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -42,11 +43,17 @@ namespace iOSTips
 				case 1:
 					{
 						InvokeOnMainThread(()=>{
-						PerformSegue("moveToNotificationViewSegue", this);
+							PerformSegue("moveToNotificationViewSegue", this);
 						});
 					}
 					break;
-
+				case 2:
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToVideoViewSegue", this);
+						});
+					}
+					break;
 				}
 
 

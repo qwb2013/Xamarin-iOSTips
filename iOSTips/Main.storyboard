@@ -64,6 +64,7 @@
                         <outlet property="tipsTable" destination="iem-QZ-iRy" id="GUT-bG-gc6"/>
                         <segue destination="zec-RR-OBI" kind="show" identifier="moveToKeyboardViewSegue" id="CWC-5s-g9N"/>
                         <segue destination="26r-lD-xuM" kind="show" identifier="moveToNotificationViewSegue" id="V2W-al-ZlQ"/>
+                        <segue destination="CQC-UT-18R" kind="show" identifier="moveToVideoViewSegue" id="3BU-et-EKP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -187,6 +188,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Tn-DN-aVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="681"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="Wdd-Je-jRn">
+            <objects>
+                <viewController id="CQC-UT-18R" customClass="VideoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j3l-Mm-Kmz"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Ue-q0-0g4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Sg-tM-Rr4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhc-fK-f6U">
+                                <rect key="frame" x="200" y="515" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Dwq-Xj-yFi"/>
+                                    <constraint firstAttribute="height" constant="30" id="Jsd-aT-jGO"/>
+                                </constraints>
+                                <state key="normal" title="Play"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yhc-fK-f6U" firstAttribute="centerX" secondItem="0Sg-tM-Rr4" secondAttribute="centerX" id="1FV-wV-qf1"/>
+                            <constraint firstItem="8Ue-q0-0g4" firstAttribute="top" secondItem="Yhc-fK-f6U" secondAttribute="bottom" constant="55" id="5hl-hd-f8v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnPlay" destination="Yhc-fK-f6U" id="sea-uE-fRh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VlM-zv-Zd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="1430"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ePd-iM-pY9">
