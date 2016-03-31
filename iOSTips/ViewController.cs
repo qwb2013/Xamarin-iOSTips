@@ -26,6 +26,8 @@ namespace iOSTips
 			Tips.Add (new Tip{Name = "UITextField and Keyboard", Description = "" });
 			Tips.Add (new Tip{Name = "Local Notification", Description = "" });
 			Tips.Add (new Tip{Name = "Play Video", Description = "" });
+			Tips.Add (new Tip{Name = "QR Code", Description = "" });
+			Tips.Add (new Tip{Name = "Load XIB", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -54,10 +56,22 @@ namespace iOSTips
 						});
 					}
 					break;
+				case 3:
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToQRViewSegue", this);
+						});
+					}
+					break;
+				case 4:
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToLoadXibViewSegue", this);
+						});
+					}
+					break;
 				}
-
-
-				
+					
 			};
 			tipsTable.Source = tableSource;
 
