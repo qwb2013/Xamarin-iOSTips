@@ -110,6 +110,7 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="DescView.xib" />
+    <InterfaceDefinition Include="VideoDescView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -150,6 +151,10 @@
     <Compile Include="DescView.cs" />
     <Compile Include="DescView.designer.cs">
       <DependentUpon>DescView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoDescView.cs" />
+    <Compile Include="VideoDescView.designer.cs">
+      <DependentUpon>VideoDescView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

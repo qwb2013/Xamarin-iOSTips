@@ -52,6 +52,8 @@ namespace iOSTips
 			} 
 
 
+
+
 			if (launchOptions != null)
 			{
 				// 如果是因為 Local Notification 啟動 App 

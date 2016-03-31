@@ -13,6 +13,7 @@ namespace iOSTips
 	{
 		MPMoviePlayerController moviePlayer;
 
+
 		public VideoViewController (IntPtr handle) : base (handle)
 		{
 		}

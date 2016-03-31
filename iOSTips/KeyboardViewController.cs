@@ -24,6 +24,16 @@ namespace iOSTips
 		{
 		}
 
+		public override void AwakeFromNib ()
+		{
+			base.AwakeFromNib ();
+
+
+
+
+
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
