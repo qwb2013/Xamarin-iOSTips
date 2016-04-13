@@ -68,11 +68,47 @@
                         <segue destination="CQC-UT-18R" kind="show" identifier="moveToVideoViewSegue" id="3BU-et-EKP"/>
                         <segue destination="yr4-DP-Qw8" kind="show" identifier="moveToQRViewSegue" id="WNU-1B-Oy8"/>
                         <segue destination="gZi-YK-Lfe" kind="show" identifier="moveToLoadXibViewSegue" id="rHb-DB-EjW"/>
+                        <segue destination="T3e-kr-T3S" kind="show" id="mw7-iC-CpE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1201" y="544"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="IWs-OF-Nub">
+            <objects>
+                <viewController id="T3e-kr-T3S" customClass="CameraViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F3c-s7-DiH"/>
+                        <viewControllerLayoutGuide type="bottom" id="gOR-VU-tF3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kmR-sV-tiz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCJ-3s-ZHr">
+                                <rect key="frame" x="20" y="550" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YVS-vv-neg"/>
+                                </constraints>
+                                <state key="normal" title="Camera - UIImagePickerViewController"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cCJ-3s-ZHr" firstAttribute="leading" secondItem="kmR-sV-tiz" secondAttribute="leadingMargin" id="9Vi-mK-G5Y"/>
+                            <constraint firstItem="cCJ-3s-ZHr" firstAttribute="trailing" secondItem="kmR-sV-tiz" secondAttribute="trailingMargin" id="hUH-8L-O2q"/>
+                            <constraint firstItem="gOR-VU-tF3" firstAttribute="top" secondItem="cCJ-3s-ZHr" secondAttribute="bottom" constant="20" id="nkl-Fz-Ysm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnUIImagePickerViewController" destination="cCJ-3s-ZHr" id="UsR-Mc-8ee"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BP4-Ln-qA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="-640"/>
         </scene>
         <!--Keyboard View Controller-->
         <scene sceneID="F60-qH-xYr">
