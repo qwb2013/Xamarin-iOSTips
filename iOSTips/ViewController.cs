@@ -28,6 +28,7 @@ namespace iOSTips
 			Tips.Add (new Tip{Name = "Play Video", Description = "" });
 			Tips.Add (new Tip{Name = "QR Code", Description = "" });
 			Tips.Add (new Tip{Name = "Load XIB", Description = "" });
+			Tips.Add (new Tip{Name = "Camera", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -67,6 +68,13 @@ namespace iOSTips
 					{
 						InvokeOnMainThread(()=>{
 							PerformSegue("moveToLoadXibViewSegue", this);
+						});
+					}
+					break;
+				case 5:
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToCameraViewSegue", this);
 						});
 					}
 					break;

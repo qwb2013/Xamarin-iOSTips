@@ -14,8 +14,7 @@ namespace iOSTips
 {
 	public partial class CameraViewController : UIViewController
 	{
-		private UIImagePickerController _imagePickerViewController;
-
+		
 		public CameraViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -27,24 +26,28 @@ namespace iOSTips
 			//
 			btnUIImagePickerViewController.TouchUpInside += (object sender, EventArgs e) => {
 
-				_imagePickerViewController = new UIImagePickerController();
+				UIImagePickerController imagePickerViewController;
 
-				_imagePickerViewController.SourceType = UIImagePickerControllerSourceType.Camera ;
+				imagePickerViewController = new UIImagePickerController();
 
-				_imagePickerViewController.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary );
+				imagePickerViewController.SourceType = UIImagePickerControllerSourceType.Camera ;
 
-				_imagePickerViewController.FinishedPickingMedia += (object qsender, UIImagePickerMediaPickedEventArgs e) => {
+				imagePickerViewController.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary );
 
+				imagePickerViewController.FinishedPickingMedia += (object qsender, UIImagePickerMediaPickedEventArgs ie) => {
 
+					resultImageView.Image = ie.OriginalImage;
 
+					imagePickerViewController.DismissViewControllerAsync( true );
 				};
 
-				_imagePickerViewController.Canceled += (object psender, EventArgs pe) => {
+				imagePickerViewController.Canceled += (object psender, EventArgs pe) => {
 
 
+					imagePickerViewController.DismissViewControllerAsync( true );
 				};
 
-				PresentViewController( _imagePickerViewController, true, null);
+				PresentViewController( imagePickerViewController, true, null);
 
 			};
 

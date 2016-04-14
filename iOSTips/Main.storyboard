@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ahw-3S-ofv" id="CW0-ti-67U">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe1-gE-lRp">
@@ -68,7 +68,7 @@
                         <segue destination="CQC-UT-18R" kind="show" identifier="moveToVideoViewSegue" id="3BU-et-EKP"/>
                         <segue destination="yr4-DP-Qw8" kind="show" identifier="moveToQRViewSegue" id="WNU-1B-Oy8"/>
                         <segue destination="gZi-YK-Lfe" kind="show" identifier="moveToLoadXibViewSegue" id="rHb-DB-EjW"/>
-                        <segue destination="T3e-kr-T3S" kind="show" id="mw7-iC-CpE"/>
+                        <segue destination="T3e-kr-T3S" kind="show" identifier="moveToCameraViewSegue" id="mw7-iC-CpE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -94,16 +94,35 @@
                                 </constraints>
                                 <state key="normal" title="Camera - UIImagePickerViewController"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YDQ-ca-6oF">
+                                <rect key="frame" x="0.0" y="64" width="600" height="440"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vyk-aU-X6q">
+                                <rect key="frame" x="20" y="512" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="R4Y-iW-ld5"/>
+                                </constraints>
+                                <state key="normal" title="Camera - AVFoundation"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vyk-aU-X6q" firstAttribute="top" secondItem="YDQ-ca-6oF" secondAttribute="bottom" constant="8" id="490-Wd-9Gc"/>
                             <constraint firstItem="cCJ-3s-ZHr" firstAttribute="leading" secondItem="kmR-sV-tiz" secondAttribute="leadingMargin" id="9Vi-mK-G5Y"/>
+                            <constraint firstItem="YDQ-ca-6oF" firstAttribute="leading" secondItem="kmR-sV-tiz" secondAttribute="leadingMargin" constant="-20" id="Fi9-J4-ZS5"/>
+                            <constraint firstItem="Vyk-aU-X6q" firstAttribute="leading" secondItem="kmR-sV-tiz" secondAttribute="leadingMargin" id="PSt-bC-ndP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YDQ-ca-6oF" secondAttribute="trailing" constant="-20" id="QuR-Kf-7rw"/>
+                            <constraint firstItem="YDQ-ca-6oF" firstAttribute="top" secondItem="F3c-s7-DiH" secondAttribute="bottom" id="UJ0-ga-IeN"/>
+                            <constraint firstItem="Vyk-aU-X6q" firstAttribute="trailing" secondItem="kmR-sV-tiz" secondAttribute="trailingMargin" id="VIJ-d6-bAC"/>
                             <constraint firstItem="cCJ-3s-ZHr" firstAttribute="trailing" secondItem="kmR-sV-tiz" secondAttribute="trailingMargin" id="hUH-8L-O2q"/>
+                            <constraint firstItem="cCJ-3s-ZHr" firstAttribute="top" secondItem="Vyk-aU-X6q" secondAttribute="bottom" constant="8" id="lkT-95-chm"/>
                             <constraint firstItem="gOR-VU-tF3" firstAttribute="top" secondItem="cCJ-3s-ZHr" secondAttribute="bottom" constant="20" id="nkl-Fz-Ysm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnAVFoundation" destination="Vyk-aU-X6q" id="U1m-Do-WEu"/>
                         <outlet property="btnUIImagePickerViewController" destination="cCJ-3s-ZHr" id="UsR-Mc-8ee"/>
+                        <outlet property="resultImageView" destination="YDQ-ca-6oF" id="0iG-Fu-s5y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BP4-Ln-qA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
