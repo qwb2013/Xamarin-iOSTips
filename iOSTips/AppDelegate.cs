@@ -11,6 +11,9 @@ using CoreGraphics;
 
 using MBProgressHUD;
 
+using Google.Core;
+using Google.SignIn;
+
 using Debug = System.Diagnostics.Debug ;
 
 
@@ -21,7 +24,8 @@ namespace iOSTips
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		// class-level declarations
+		const string clientId = "110242107211-q2h1rbta106h6nsjoh6hvvmo4tq4rhk9.apps.googleusercontent.com";
+
 
 		public override UIWindow Window {
 			get;
@@ -80,6 +84,14 @@ namespace iOSTips
 
 					UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
 				}
+			}
+
+			//
+			NSError configureError;
+			Context.SharedInstance.Configure (out configureError);
+			if (configureError != null) {
+				Console.WriteLine ("Error configuring the Google context: {0}", configureError);
+				SignIn.SharedInstance.ClientID = clientId;
 			}
 
 			return true;
@@ -161,9 +173,12 @@ namespace iOSTips
 
 		public override void ReceivedRemoteNotification (UIApplication application, NSDictionary userInfo)
 		{
-			
-
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;	
+		}
+
+		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+		{
+			return SignIn.SharedInstance.HandleUrl (url, sourceApplication, annotation);
 		}
 	}
 }

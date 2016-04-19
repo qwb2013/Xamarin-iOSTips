@@ -35,5 +35,24 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLTypes</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.110242107211-q2h1rbta106h6nsjoh6hvvmo4tq4rhk9</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLTypes</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.tripim.iOSTips</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -29,6 +29,7 @@ namespace iOSTips
 			Tips.Add (new Tip{Name = "QR Code", Description = "" });
 			Tips.Add (new Tip{Name = "Load XIB", Description = "" });
 			Tips.Add (new Tip{Name = "Camera", Description = "" });
+			Tips.Add (new Tip{Name = "Google Sign-In", Description = ""});
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -76,6 +77,14 @@ namespace iOSTips
 						InvokeOnMainThread(()=>{
 							PerformSegue("moveToCameraViewSegue", this);
 						});
+					}
+					break;
+				case 6:
+					{
+						InvokeOnMainThread(()=>{
+							PerformSegue("moveToGoogleSignInViewSegue", this);
+						});
+
 					}
 					break;
 				}
