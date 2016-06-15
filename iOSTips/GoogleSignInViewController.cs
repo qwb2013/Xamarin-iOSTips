@@ -26,6 +26,7 @@ namespace iOSTips
 			SignIn.SharedInstance.SignedIn += (object sender, SignInDelegateEventArgs e) => {
 
 				if (e.User != null && e.Error == null) {
+					ToggleAuthUI ();
 					Debug.WriteLine(e.User.Profile.Name);
 				}
 			};
@@ -33,25 +34,36 @@ namespace iOSTips
 			SignIn.SharedInstance.Disconnected += (object sender, SignInDelegateEventArgs e) => {
 
 				if (e.User != null && e.Error == null) {
+					ToggleAuthUI ();
 					Debug.WriteLine(e.User.Profile.Name);
 				}
 
 			};
 
 			SignIn.SharedInstance.SignInUserSilently ();
-
+			ToggleAuthUI ();
 		}
 
-		void ToggleAuthUI ()
+		private void ToggleAuthUI ()
 		{
+			var message = string.Empty;
+
 			if (SignIn.SharedInstance.CurrentUser == null || SignIn.SharedInstance.CurrentUser.Authentication == null) {
 				// Not signed in
-				lbStatus.Text = "Google Sign in\niOS Demo";
+				message = "Google Sign in\niOS Demo";
 
 			} else {
 				// Signed in
+				message = $"{SignIn.SharedInstance.CurrentUser.Profile.Name}";
 
 			}
+
+			InvokeOnMainThread (() => {
+
+				lbStatus.Text = message;
+			
+			});
+
 		}
 	}
 }
