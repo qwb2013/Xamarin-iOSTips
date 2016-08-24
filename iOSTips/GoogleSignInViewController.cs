@@ -21,6 +21,8 @@ namespace iOSTips
 		{
 			base.ViewDidLoad ();
 
+			Title = "Google Sign-in";
+
 			SignIn.SharedInstance.UIDelegate = this;
 
 			SignIn.SharedInstance.SignedIn += (object sender, SignInDelegateEventArgs e) => {

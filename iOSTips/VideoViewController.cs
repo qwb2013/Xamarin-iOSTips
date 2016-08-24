@@ -22,6 +22,8 @@ namespace iOSTips
 		{
 			base.ViewDidLoad ();
 
+			Title = "Video";
+
 			btnPlay.TouchUpInside += (object sender, EventArgs e) => {
 				moviePlayer = new MPMoviePlayerController (NSUrl.FromFilename ("sample_iPod.m4v"));
 

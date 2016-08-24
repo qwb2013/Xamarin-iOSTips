@@ -25,6 +25,8 @@ namespace iOSTips
 		{
 			base.ViewDidLoad ();
 
+			Title = "Local Notification";
+
 			btnSend.TouchUpInside += (object sender, EventArgs e) => {
 
 				if( txtTime.IsFirstResponder ){

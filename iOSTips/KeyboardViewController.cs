@@ -44,7 +44,7 @@ namespace iOSTips
 
 				var requestString = request.Url.AbsoluteString;
 
-				if( requestString.StartsWith("liddle://") ){
+				if( requestString.StartsWith("liddle://", StringComparison.CurrentCultureIgnoreCase ) ){
 					var components = requestString.Split ( new[]{ @"://"}, StringSplitOptions.None);
 
 					if (components.Length > 1 && components [0].ToLower() == @"liddle".ToLower() && components [1] == @"Hi" ) {

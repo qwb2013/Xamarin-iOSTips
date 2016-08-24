@@ -23,6 +23,8 @@ namespace iOSTips
 		{
 			base.ViewDidLoad ();
 
+			Title = "Camera";
+
 			//
 			btnUIImagePickerViewController.TouchUpInside += (object sender, EventArgs e) => {
 

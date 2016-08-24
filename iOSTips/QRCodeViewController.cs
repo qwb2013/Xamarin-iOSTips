@@ -20,6 +20,8 @@ namespace iOSTips
 		{
 			base.ViewDidLoad ();
 
+			Title = "QR Code";
+
 			btnScan.TouchUpInside += async (object sender, EventArgs e) => {
 				var scanner = new ZXing.Mobile.MobileBarcodeScanner();
 				var result = await scanner.Scan();
