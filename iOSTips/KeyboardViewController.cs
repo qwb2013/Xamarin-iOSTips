@@ -18,7 +18,7 @@ namespace iOSTips
 	public partial class KeyboardViewController : UIViewController
 	{
 		MTMBProgressHUD _hud;
-		int _currentKeyboardHight;
+
 
 		public KeyboardViewController (IntPtr handle) : base (handle)
 		{
@@ -27,11 +27,6 @@ namespace iOSTips
 		public override void AwakeFromNib ()
 		{
 			base.AwakeFromNib ();
-
-
-
-
-
 		}
 
 		public override void ViewDidLoad ()
@@ -52,29 +47,26 @@ namespace iOSTips
 				if( requestString.StartsWith("liddle://") ){
 					var components = requestString.Split ( new[]{ @"://"}, StringSplitOptions.None);
 
-					if (components.Length > 1 && components [0].ToLower() == @"liddle".ToLower()) {
+					if (components.Length > 1 && components [0].ToLower() == @"liddle".ToLower() && components [1] == @"Hi" ) {
 
-						if (components [1] == @"Hi") {
-
-							UIAlertController alert = UIAlertController.Create (@"Hi Title", @"當然是世界好", UIAlertControllerStyle.Alert);
+						UIAlertController alert = UIAlertController.Create (@"Hi Title", @"當然是世界好", UIAlertControllerStyle.Alert);
 
 
-							UIAlertAction okAction = UIAlertAction.Create (@"OK", UIAlertActionStyle.Default, (action) => {
-								Console.WriteLine(@"OK");
-							});
-							alert.AddAction (okAction);
+								UIAlertAction okAction = UIAlertAction.Create (@"OK", UIAlertActionStyle.Default, (action) => {
+									Console.WriteLine (@"OK");
+								});
+								alert.AddAction (okAction);
 
 
-							UIAlertAction cancelAction = UIAlertAction.Create (@"Cancel", UIAlertActionStyle.Default, (action) =>{
-								Console.WriteLine(@"Cancel");
-							});
-							alert.AddAction (cancelAction);
+								UIAlertAction cancelAction = UIAlertAction.Create (@"Cancel", UIAlertActionStyle.Default, (action) => {
+									Console.WriteLine (@"Cancel");
+								});
+								alert.AddAction (cancelAction);
 
-							PresentViewController (alert, true, null);
+								PresentViewController (alert, true, null);
 
 
-							return false;
-						}
+								return false;
 
 					}
 
@@ -161,6 +153,12 @@ namespace iOSTips
 
 			btnGo.TouchUpInside += (object sender, EventArgs e) => {
 
+				InvokeOnMainThread (() => {
+					if (txtUrl.IsFirstResponder) {
+						txtUrl.ResignFirstResponder ();
+					}
+				});
+
 				string urlString = txtUrl.Text.Trim() ;
 
 				var alertController = UIAlertController.Create ("網址", urlString, UIAlertControllerStyle.Alert);
@@ -203,48 +201,29 @@ namespace iOSTips
 			});
 			this.View.AddGestureRecognizer (tapGestureRecognizer);
 
-			NSNotificationCenter.DefaultCenter.AddObserver( UIKeyboard.WillChangeFrameNotification, UIKeyboardWillChangeFrameNotification);
-			NSNotificationCenter.DefaultCenter.AddObserver( UIKeyboard.WillHideNotification, UIKeyboardWillHideNotification);
+
+			UIKeyboard.Notifications.ObserveWillChangeFrame ((sender, e) => {
+
+				var beginRect = e.FrameBegin;
+				var endRect = e.FrameEnd;
+
+				Debug.WriteLine ($"ObserveWillChangeFrame endRect:{endRect.Height}");
+
+				txtUrlBottomConstraint.Constant = endRect.Height + 5;
+
+			});
 
 
-		}
+			UIKeyboard.Notifications.ObserveDidChangeFrame ((sender, e) => {
 
-		private void UIKeyboardWillHideNotification (NSNotification notification){
-			NSString key = new NSString(UIKeyboard.FrameEndUserInfoKey.ToString());
+				var beginRect = e.FrameBegin;
+				var endRect = e.FrameEnd;
 
-			NSObject objRect = notification.UserInfo[key];
+				Debug.WriteLine ($"ObserveDidChangeFrameendRect:{endRect.Height}");
 
-			if (objRect is NSValue) {
-				var v = (NSValue)objRect;
+				//txtUrlBottomConstraint.Constant = endRect.Height + 5;
+			});
 
-				var rect = v.RectangleFValue;
-
-				_currentKeyboardHight = (int)rect.Height;
-
-				Debug.WriteLine ("Hide Keyboard Height:{0}", _currentKeyboardHight);
-				txtUrlBottomConstraint.Constant = 5;
-			}
-		}
-
-		private void UIKeyboardWillChangeFrameNotification(NSNotification notification){
-			if(notification.UserInfo.ContainsKey( new NSString(UIKeyboard.FrameBeginUserInfoKey.ToString()))){
-
-
-				NSString key = new NSString(UIKeyboard.FrameEndUserInfoKey.ToString());
-
-				NSObject objRect = notification.UserInfo[key];
-
-				if (objRect is NSValue) {
-					var v = (NSValue)objRect;
-
-					var rect = v.RectangleFValue;
-
-					_currentKeyboardHight = (int)rect.Height;
-
-					Debug.WriteLine ("Change Keyboard Height:{0}", _currentKeyboardHight);
-					txtUrlBottomConstraint.Constant = _currentKeyboardHight + 5;
-				}
-			}
 		}
 
 
