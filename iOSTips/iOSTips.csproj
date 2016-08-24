@@ -170,6 +170,10 @@
     <Compile Include="GoogleSignInViewController.designer.cs">
       <DependentUpon>GoogleSignInViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Touch\TouchGestureViewController.cs" />
+    <Compile Include="Touch\TouchGestureViewController.designer.cs">
+      <DependentUpon>TouchGestureViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets')" />
@@ -196,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Images\" />
+    <Folder Include="Touch\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Images\idf.jpg" />

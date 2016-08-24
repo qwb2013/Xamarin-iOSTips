@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ArY-YX-xle">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ArY-YX-xle">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ahw-3S-ofv" id="CW0-ti-67U">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe1-gE-lRp">
@@ -69,6 +70,7 @@
                         <segue destination="gZi-YK-Lfe" kind="show" identifier="moveToLoadXibViewSegue" id="rHb-DB-EjW"/>
                         <segue destination="T3e-kr-T3S" kind="show" identifier="moveToCameraViewSegue" id="mw7-iC-CpE"/>
                         <segue destination="hFc-lf-hfb" kind="show" identifier="moveToGoogleSignInViewSegue" id="mnI-5k-65o"/>
+                        <segue destination="VVd-Hx-hhK" kind="show" identifier="moveToTouchGestureViewSegue" id="anm-Mg-55w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -394,6 +396,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXM-WG-JSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="2820"/>
+        </scene>
+        <!--Touch Gesture View Controller-->
+        <scene sceneID="Fsf-bw-wks">
+            <objects>
+                <viewController id="VVd-Hx-hhK" customClass="TouchGestureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NRJ-S7-cOs"/>
+                        <viewControllerLayoutGuide type="bottom" id="tcL-BG-1fn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p8j-1K-DYI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mct-Op-scV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="3508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ePd-iM-pY9">
