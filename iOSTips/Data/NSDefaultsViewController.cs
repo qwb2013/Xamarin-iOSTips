@@ -29,11 +29,11 @@ namespace iOSTips
 			};
 
 			btnWriteNSDefaults.TouchUpInside += (sender, e) => {
-				SaveNSDefaults ();
+				SaveNSDefaults ("demo", $"Hi, Xamarin { DateTime.Now.ToLongTimeString() }");
 			};
 
 			btnReadNSDefaults.TouchUpInside += (sender, e) => {
-				ReadNSDefaults ();
+				ReadNSDefaults ("demo");
 			};
 
 			#endregion
@@ -94,18 +94,17 @@ namespace iOSTips
 
 		}
 
-		private void SaveNSDefaults () {
-
-			var message = "Hello, Xamarin!";
-
-			NSUserDefaults.StandardUserDefaults.SetString ( message, "demokey");
+		public void SaveNSDefaults (string key, string item)
+		{
+			NSUserDefaults.StandardUserDefaults.SetString (item, key);
 			NSUserDefaults.StandardUserDefaults.Synchronize ();
 
-			Debug.WriteLine ($"{ message } Saved!");
+			Debug.WriteLine ($"{ item } Saved!");
 		}
 
-		private string ReadNSDefaults () {
-			var stored = NSUserDefaults.StandardUserDefaults.StringForKey ("demokey");
+		public string ReadNSDefaults (string key)
+		{
+			var stored = NSUserDefaults.StandardUserDefaults.StringForKey (key);
 
 			Debug.WriteLine ($"stored:{stored}!");
 
