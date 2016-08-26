@@ -23,14 +23,18 @@ namespace iOSTips
 			// 
 			Tips = new List<Tip>();
 
-			Tips.Add (new Tip{Name = "UITextField and Keyboard", Description = "" });
-			Tips.Add (new Tip{Name = "Local Notification", Description = "" });
-			Tips.Add (new Tip{Name = "Play Video", Description = "" });
-			Tips.Add (new Tip{Name = "QR Code", Description = "" });
-			Tips.Add (new Tip{Name = "Load XIB", Description = "" });
-			Tips.Add (new Tip{Name = "Camera", Description = "" });
-			Tips.Add (new Tip{Name = "Google Sign-In", Description = ""});
+			Tips.Add (new Tip { Name = "UITextField and Keyboard", Description = "" });
+			Tips.Add (new Tip { Name = "Local Notification", Description = "" });
+			Tips.Add (new Tip { Name = "Play Video", Description = "" });
+			Tips.Add (new Tip { Name = "QR Code", Description = "" });
+			Tips.Add (new Tip { Name = "Load XIB", Description = "" });
+			Tips.Add (new Tip { Name = "Camera", Description = "" });
+			Tips.Add (new Tip { Name = "Google Sign-In", Description = ""});
 			Tips.Add (new Tip { Name = "Touch and Gesture", Description = "" });
+			Tips.Add (new Tip { Name = "NSDefaults and KeyChain", Description = "" });
+			Tips.Add (new Tip { Name = "File IO", Description = "" });
+			Tips.Add (new Tip { Name = "SQLite", Description = "" });
+			Tips.Add (new Tip { Name = "Web Service", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -95,7 +99,34 @@ namespace iOSTips
 						});
 					}
 					break;
+				case 8: 
+					{
+						InvokeOnMainThread (() => {
+							PerformSegue ("moveToNSDefaultsViewSegue", this);
+						});
+					}
+					break;
+				case 9: {
+						InvokeOnMainThread (() => {
+							PerformSegue ("moveToFileIOViewSegue", this);
+						});
+					}
+					break;
+				case 10: {
+						InvokeOnMainThread (() => {
+							PerformSegue ("moveToSQLiteViewSegue", this);
+						});
+					}
+					break;
+				case 11: {
+						InvokeOnMainThread (() => {
+							PerformSegue ("moveToWebServiceViewSegue", this);
+						});
+					}
+					break;
 				}
+
+
 					
 			};
 			tipsTable.Source = tableSource;
