@@ -55,44 +55,28 @@ namespace iOSTips
 
 		public async Task SaveTextAsync (string filename, string text)
 		{
-			string path = CreatePathToFile (filename);
+			string path = DocumentPath (filename);
 			using (StreamWriter sw = File.CreateText (path))
 				await sw.WriteAsync (text);
 		}
 
-		public string LoadText (string filename)
-		{
-			var result = string.Empty;
-			string path = CreatePathToFile (filename);
-
-			using (var file = new FileStream (path, FileMode.Open)) {
-				using (var reader = new StreamReader (file)) {
-					result = reader.ReadToEnd ();
-				}
-			}
-
-			return result;
-		}
-
 		public async Task<string> LoadTextAsync (string filename)
 		{
-			string path = CreatePathToFile (filename);
+			string path = DocumentPath (filename);
 
 			using (var file = new FileStream (path, FileMode.Open)) {
 				using (var reader = new StreamReader (file)) {
-					return ReadFileText (reader).Result;
+
+					var awaitResult = await reader.ReadToEndAsync ();
+
+					return awaitResult;
 				}
 			}
-		}
-
-		private async Task<string> ReadFileText (StreamReader reader)
-		{
-			return await Task.Run (() => reader.ReadToEndAsync ()).ConfigureAwait (false);
 		}
 
 		public bool FileExists (string filename)
 		{
-			return File.Exists (CreatePathToFile (filename));
+			return File.Exists (DocumentPath (filename));
 		}
 
 		#endregion
@@ -104,7 +88,7 @@ namespace iOSTips
 			}
 		}
 
-		static string CreatePathToFile (string fileName)
+		static string DocumentPath (string fileName)
 		{
 			return Path.Combine (DocumentsPath, fileName);
 		}
