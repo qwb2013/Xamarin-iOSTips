@@ -54,6 +54,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Getting location for sample application</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Getting location for sample application</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

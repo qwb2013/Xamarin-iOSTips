@@ -35,6 +35,7 @@ namespace iOSTips
 			Tips.Add (new Tip { Name = "File IO", Description = "" });
 			Tips.Add (new Tip { Name = "SQLite", Description = "" });
 			Tips.Add (new Tip { Name = "Web Service", Description = "" });
+			Tips.Add (new Tip { Name = "Location", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -106,21 +107,31 @@ namespace iOSTips
 						});
 					}
 					break;
-				case 9: {
+				case 9: 
+					{
 						InvokeOnMainThread (() => {
 							PerformSegue ("moveToFileIOViewSegue", this);
 						});
 					}
 					break;
-				case 10: {
+				case 10: 
+					{
 						InvokeOnMainThread (() => {
 							PerformSegue ("moveToSQLiteViewSegue", this);
 						});
 					}
 					break;
-				case 11: {
+				case 11: 
+					{
 						InvokeOnMainThread (() => {
 							PerformSegue ("moveToWebServiceViewSegue", this);
+						});
+					}
+					break;
+				case 12: 
+					{
+						InvokeOnMainThread (() => {
+							PerformSegue ("moveToLocationViewSegue", this);
 						});
 					}
 					break;
