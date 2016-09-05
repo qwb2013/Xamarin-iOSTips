@@ -55,9 +55,9 @@
 		</dict>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Getting location for sample application</string>
+	<string>供測試使用</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Getting location for sample application</string>
+	<string>供測試使用</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
