@@ -16,18 +16,26 @@ namespace iOSTips
 		UIKit.UIView bottomView { get; set; }
 
 		[Outlet]
+		UIKit.UILabel lbMessage { get; set; }
+
+		[Outlet]
 		UIKit.UIView topView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (topView != null) {
-				topView.Dispose ();
-				topView = null;
+			if (lbMessage != null) {
+				lbMessage.Dispose ();
+				lbMessage = null;
 			}
 
 			if (bottomView != null) {
 				bottomView.Dispose ();
 				bottomView = null;
+			}
+
+			if (topView != null) {
+				topView.Dispose ();
+				topView = null;
 			}
 		}
 	}
