@@ -21,7 +21,10 @@ namespace iOSTips
 
 			UITapGestureRecognizer tapGestureRecognizer = new UITapGestureRecognizer (() => {
 				Debug.WriteLine ("Tap !");
+
+				//tapGestureRecognizer.LocationInView( 
 			});
+
 			this.View.AddGestureRecognizer (tapGestureRecognizer);
 
 		}
