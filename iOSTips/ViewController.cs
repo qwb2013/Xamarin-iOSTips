@@ -36,6 +36,7 @@ namespace iOSTips
 			Tips.Add (new Tip { Name = "SQLite", Description = "" });
 			Tips.Add (new Tip { Name = "Web Service", Description = "" });
 			Tips.Add (new Tip { Name = "Location", Description = "" });
+			Tips.Add(new Tip { Name = "Accelerometer", Description = "" });
 
 			var tableSource = new TipTableSource (Tips);
 			tableSource.TipSelected += (object sender, TipSelectedEventArgs e) => {
@@ -135,8 +136,15 @@ namespace iOSTips
 						});
 					}
 					break;
+				case 13:
+					{
+						InvokeOnMainThread(() =>
+						{
+							PerformSegue("moveToAccelerometerViewSegue", this);
+						});
+					}
+					break;
 				}
-
 
 					
 			};
