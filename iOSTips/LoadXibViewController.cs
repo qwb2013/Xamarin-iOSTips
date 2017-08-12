@@ -76,6 +76,12 @@ namespace iOSTips
 			videoDescView.btnRightBottom.TouchUpInside += (object sender, EventArgs e) => {
 				
 			};
+			
+			//view.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor, 0).Active = true; 
+            		//view.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor, 0).Active = true;
+            		//view.TopAnchor.ConstraintEqualTo(this.View.TopAnchor, 0).Active = true;
+            		//view.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor, 0).Active = true;
+
 
 			/*
 			var view = LoadDescriptionViewFromXib ();
